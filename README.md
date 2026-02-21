@@ -4,7 +4,11 @@
 
 این سرویس با `FastAPI` ساخته شده و قیمت لحظه‌ای طلا و سکه را از صفحه زیر اسکرپ می‌کند:
 
+<div dir="ltr" align="left">
+
 `https://www.estjt.ir/price/`
+
+</div>
 
 ## پیش‌نیازها
 
@@ -13,19 +17,31 @@
 
 ## اجرای سریع
 
+<div dir="ltr" align="left">
+
 ```bash
 docker compose up --build -d
 ```
 
+</div>
+
 توقف سرویس:
+
+<div dir="ltr" align="left">
 
 ```bash
 docker compose down
 ```
 
+</div>
+
 آدرس سرویس:
 
+<div dir="ltr" align="left">
+
 `http://localhost:8000`
+
+</div>
 
 
 ## تنظیمات کش (Redis)
@@ -43,43 +59,73 @@ docker compose down
 
 برای override کردن هر مقدار، می‌توانید همان لحظه‌ی اجرا متغیر را ست کنید:
 
+<div dir="ltr" align="left">
+
 ```bash
 CACHE_TTL_SECONDS=20 docker compose up -d
 ```
+
+</div>
 
 ## Endpoint ها
 
 ### 1) دریافت همه قیمت‌ها
 
+<div dir="ltr" align="left">
+
 `GET /v1/prices`
 
+</div>
+
 نمونه:
+
+<div dir="ltr" align="left">
 
 ```bash
 curl -X GET "http://localhost:8000/v1/prices"
 ```
 
+</div>
+
 ### 2) دریافت فقط طلا
+
+<div dir="ltr" align="left">
 
 `GET /v1/prices/gold`
 
+</div>
+
 نمونه:
+
+<div dir="ltr" align="left">
 
 ```bash
 curl -X GET "http://localhost:8000/v1/prices/gold"
 ```
 
+</div>
+
 ### 3) دریافت فقط سکه
+
+<div dir="ltr" align="left">
 
 `GET /v1/prices/coin`
 
+</div>
+
 نمونه:
+
+<div dir="ltr" align="left">
 
 ```bash
 curl -X GET "http://localhost:8000/v1/prices/coin"
 ```
 
+</div>
+
 ## فرمت خروجی API
+
+<div dir="ltr" align="left">
 
 ```json
 {
@@ -90,7 +136,11 @@ curl -X GET "http://localhost:8000/v1/prices/coin"
 }
 ```
 
+</div>
+
 ## نمونه پاسخ موفق
+
+<div dir="ltr" align="left">
 
 ```json
 {
@@ -127,9 +177,13 @@ curl -X GET "http://localhost:8000/v1/prices/coin"
 }
 ```
 
+</div>
+
 ## نمونه پاسخ خطا
 
 تغییر ساختار سایت مبدا:
+
+<div dir="ltr" align="left">
 
 ```json
 {
@@ -139,6 +193,8 @@ curl -X GET "http://localhost:8000/v1/prices/coin"
   "result": null
 }
 ```
+
+</div>
 
 ## خطاهای رایج
 
