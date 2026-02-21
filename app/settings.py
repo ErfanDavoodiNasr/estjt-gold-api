@@ -4,35 +4,42 @@ import os
 from dataclasses import dataclass
 
 
-def _to_bool(value: str | None, default: bool) -> bool:
+def _to_bool(value: str | None) -> bool:
     if value is None:
-        return default
+        raise ValueError("Missing required environment value.")
     normalized = value.strip().lower()
     if normalized in {"1", "true", "yes", "on"}:
         return True
     if normalized in {"0", "false", "no", "off"}:
         return False
-    return default
+    raise ValueError(f"Invalid boolean value: {value!r}")
 
 
-def _to_int(value: str | None, default: int, minimum: int = 1) -> int:
+def _to_int(value: str | None, minimum: int = 1) -> int:
     if value is None:
-        return default
+        raise ValueError("Missing required environment value.")
     try:
         parsed = int(value)
-    except ValueError:
-        return default
+    except ValueError as exc:
+        raise ValueError(f"Invalid integer value: {value!r}") from exc
     return max(minimum, parsed)
 
 
-def _to_float(value: str | None, default: float, minimum: float = 0.01) -> float:
+def _to_float(value: str | None, minimum: float = 0.01) -> float:
     if value is None:
-        return default
+        raise ValueError("Missing required environment value.")
     try:
         parsed = float(value)
-    except ValueError:
-        return default
+    except ValueError as exc:
+        raise ValueError(f"Invalid float value: {value!r}") from exc
     return max(minimum, parsed)
+
+
+def _require_env(name: str) -> str:
+    value = os.getenv(name)
+    if value is None:
+        raise ValueError(f"Missing required environment variable: {name}")
+    return value
 
 
 @dataclass(frozen=True)
@@ -46,10 +53,10 @@ class Settings:
 
 
 settings = Settings(
-    cache_enabled=_to_bool(os.getenv("CACHE_ENABLED"), True),
-    cache_ttl_seconds=_to_int(os.getenv("CACHE_TTL_SECONDS"), 20),
-    cache_key_prices=os.getenv("CACHE_KEY_PRICES", "estjt:prices"),
-    redis_url=os.getenv("REDIS_URL", "redis://redis:6379/0"),
-    redis_connect_timeout_seconds=_to_float(os.getenv("REDIS_CONNECT_TIMEOUT_SECONDS"), 0.4),
-    redis_socket_timeout_seconds=_to_float(os.getenv("REDIS_SOCKET_TIMEOUT_SECONDS"), 0.4),
+    cache_enabled=_to_bool(_require_env("CACHE_ENABLED")),
+    cache_ttl_seconds=_to_int(_require_env("CACHE_TTL_SECONDS")),
+    cache_key_prices=_require_env("CACHE_KEY_PRICES"),
+    redis_url=_require_env("REDIS_URL"),
+    redis_connect_timeout_seconds=_to_float(_require_env("REDIS_CONNECT_TIMEOUT_SECONDS")),
+    redis_socket_timeout_seconds=_to_float(_require_env("REDIS_SOCKET_TIMEOUT_SECONDS"))
 )
