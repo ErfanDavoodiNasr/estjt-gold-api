@@ -39,6 +39,8 @@ docker compose down
 - `REDIS_CONNECT_TIMEOUT_SECONDS`: timeout اتصال Redis - پیش‌فرض: `0.4`
 - `REDIS_SOCKET_TIMEOUT_SECONDS`: timeout خواندن/نوشتن Redis - پیش‌فرض: `0.4`
 
+نکته: علاوه‌بر کلید اصلی TTLدار، سرویس آخرین داده معتبر را در کلید `:stale` هم نگه می‌دارد تا هنگام اختلال منبع مبدا، پاسخ از کش ادامه پیدا کند.
+
 برای override کردن هر مقدار، می‌توانید همان لحظه‌ی اجرا متغیر را ست کنید:
 
 ```bash

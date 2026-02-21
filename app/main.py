@@ -36,7 +36,14 @@ def _load_prices() -> PricesResult:
     if cached is not None:
         return cached
 
-    fresh = scraper.fetch_prices()
+    try:
+        fresh = scraper.fetch_prices()
+    except ScraperError:
+        stale = cache.get_stale()
+        if stale is not None:
+            return stale
+        raise
+
     cache.set(fresh)
     return fresh
 

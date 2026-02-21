@@ -51,7 +51,7 @@ class UpstreamChangedError(ScraperError):
         super().__init__(1003, message)
 
 class EstjtScraper:
-    def __init__(self, url: str = TARGET_URL, timeout: tuple[int, int] = (6, 20), retries: int = 3) -> None:
+    def __init__(self, url: str = TARGET_URL, timeout: tuple[int, int] = (3, 6), retries: int = 0) -> None:
         self.url = url
         self.timeout = timeout
         self.session = self._build_session(retries)

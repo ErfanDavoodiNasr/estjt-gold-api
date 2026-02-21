@@ -16,6 +16,7 @@ class PricesCache:
         self._enabled = settings.cache_enabled
         self._ttl = settings.cache_ttl_seconds
         self._key = settings.cache_key_prices
+        self._stale_key = f"{self._key}:stale"
         self._client: Redis | None = None
 
         if self._enabled:
@@ -34,10 +35,22 @@ class PricesCache:
         if not self._client:
             return None
 
+        return self._get_by_key(self._key)
+
+    def get_stale(self) -> PricesResult | None:
+        if not self._client:
+            return None
+
+        return self._get_by_key(self._stale_key)
+
+    def _get_by_key(self, key: str) -> PricesResult | None:
+        if not self._client:
+            return None
+
         try:
-            payload = self._client.get(self._key)
+            payload = self._client.get(key)
         except RedisError:
-            logger.warning("Redis read failed; serving fresh data.", exc_info=True)
+            logger.warning("Redis read failed for key '%s'.", key, exc_info=True)
             return None
 
         if not payload:
@@ -46,7 +59,7 @@ class PricesCache:
         try:
             return PricesResult.model_validate_json(payload)
         except Exception:
-            logger.warning("Cached payload was invalid and ignored.", exc_info=True)
+            logger.warning("Cached payload for key '%s' was invalid and ignored.", key, exc_info=True)
             return None
 
     def set(self, prices: PricesResult) -> None:
@@ -54,7 +67,11 @@ class PricesCache:
             return
 
         try:
-            self._client.setex(self._key, self._ttl, prices.model_dump_json())
+            payload = prices.model_dump_json()
+            with self._client.pipeline() as pipe:
+                pipe.setex(self._key, self._ttl, payload)
+                pipe.set(self._stale_key, payload)
+                pipe.execute()
         except RedisError:
             logger.warning("Redis write failed; continuing without cache.", exc_info=True)
 
