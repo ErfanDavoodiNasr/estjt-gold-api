@@ -146,31 +146,248 @@ curl -X GET "http://localhost:8000/v1/prices/coin"
 {
   "code": 0,
   "message": "عملیات موفق بود.",
-  "referenceId": "11111111-2222-4333-8444-555555555555",
+  "referenceId": "c7a4198d-47e9-4271-86fe-20a3b3d08c49",
   "result": {
     "source": {
       "name": "estjt",
       "url": "https://www.estjt.ir/price/",
-      "fetchedAt": "2026-02-21T09:00:00Z"
+      "fetchedAt": "2026-02-21T12:53:51.476419Z"
     },
     "gold": [
       {
         "type": "انس طلا",
-        "current": {"value": 5107, "raw": "$ ۵۱۰۷", "currency": "$"},
-        "high": {"value": null, "raw": "—"},
-        "low": {"value": null, "raw": "—"},
-        "yesterdayAvg": {"value": 5028.01, "raw": "$ ۵۰۲۸٫۰۱", "currency": "$"},
-        "change": {"value": 78.99, "percent": 1.57, "direction": "asc", "raw": "۷۸٫۹۹ (۱٫۵۷)"}
+        "current": {
+          "value": 5107,
+          "raw": "$ ۵۱۰۷",
+          "currency": "$"
+        },
+        "high": {
+          "value": null,
+          "raw": "—"
+        },
+        "low": {
+          "value": null,
+          "raw": "—"
+        },
+        "yesterdayAvg": {
+          "value": 5028.01,
+          "raw": "$ ۵۰۲۸٫۰۱",
+          "currency": "$"
+        },
+        "change": {
+          "value": 78.99,
+          "percent": 1.57,
+          "direction": "asc",
+          "raw": "۷۸٫۹۹ (۱٫۵۷)"
+        }
+      },
+      {
+        "type": "مظنه تهران",
+        "current": {
+          "value": 85800000,
+          "raw": "۸۵٫۸۰۰٫۰۰۰",
+          "currency": null
+        },
+        "high": {
+          "value": null,
+          "raw": "—"
+        },
+        "low": {
+          "value": null,
+          "raw": "—"
+        },
+        "yesterdayAvg": {
+          "value": 84685017,
+          "raw": "۸۴٫۶۸۵٫۰۱۷",
+          "currency": null
+        },
+        "change": {
+          "value": 1114983,
+          "percent": 1.32,
+          "direction": "asc",
+          "raw": "۱٫۱۱۴٫۹۸۳ (۱٫۳۲)"
+        }
+      },
+      {
+        "type": "طلای ۱۸ عیار",
+        "current": {
+          "value": 19807100,
+          "raw": "۱۹٫۸۰۷٫۱۰۰",
+          "currency": null
+        },
+        "high": {
+          "value": null,
+          "raw": "—"
+        },
+        "low": {
+          "value": null,
+          "raw": "—"
+        },
+        "yesterdayAvg": {
+          "value": 19549640,
+          "raw": "۱۹٫۵۴۹٫۶۴۰",
+          "currency": null
+        },
+        "change": {
+          "value": 257460,
+          "percent": 1.32,
+          "direction": "asc",
+          "raw": "۲۵۷٫۴۶۰ (۱٫۳۲)"
+        }
+      },
+      {
+        "type": "طلای ۲۴ عیار",
+        "current": {
+          "value": 26406000,
+          "raw": "۲۶٫۴۰۶٫۰۰۰",
+          "currency": null
+        },
+        "high": {
+          "value": null,
+          "raw": "—"
+        },
+        "low": {
+          "value": null,
+          "raw": "—"
+        },
+        "yesterdayAvg": {
+          "value": 26063298,
+          "raw": "۲۶٫۰۶۳٫۲۹۸",
+          "currency": null
+        },
+        "change": {
+          "value": 342702,
+          "percent": 1.31,
+          "direction": "asc",
+          "raw": "۳۴۲٫۷۰۲ (۱٫۳۱)"
+        }
       }
     ],
     "coin": [
       {
+        "type": "سکه طرح قدیم",
+        "current": {
+          "value": 195000000,
+          "raw": "۱۹۵٫۰۰۰٫۰۰۰"
+        },
+        "high": {
+          "value": null,
+          "raw": "—"
+        },
+        "low": {
+          "value": null,
+          "raw": "—"
+        },
+        "yesterdayAvg": {
+          "value": 194583252,
+          "raw": "۱۹۴٫۵۸۳٫۲۵۲"
+        },
+        "change": {
+          "value": 416748,
+          "percent": 0.21,
+          "direction": "asc",
+          "raw": "۴۱۶٫۷۴۸ (۰٫۲۱)"
+        }
+      },
+      {
         "type": "سکه طرح جدید",
-        "current": {"value": 200000000, "raw": "۲۰۰٫۰۰۰٫۰۰۰"},
-        "high": {"value": null, "raw": "—"},
-        "low": {"value": null, "raw": "—"},
-        "yesterdayAvg": {"value": 198402710, "raw": "۱۹۸٫۴۰۲٫۷۱۰"},
-        "change": {"value": 1597290, "percent": 0.81, "direction": "asc", "raw": "۱٫۵۹۷٫۲۹۰ (۰٫۸۱)"}
+        "current": {
+          "value": 199500000,
+          "raw": "۱۹۹٫۵۰۰٫۰۰۰"
+        },
+        "high": {
+          "value": null,
+          "raw": "—"
+        },
+        "low": {
+          "value": null,
+          "raw": "—"
+        },
+        "yesterdayAvg": {
+          "value": 198402710,
+          "raw": "۱۹۸٫۴۰۲٫۷۱۰"
+        },
+        "change": {
+          "value": 1097290,
+          "percent": 0.55,
+          "direction": "asc",
+          "raw": "۱٫۰۹۷٫۲۹۰ (۰٫۵۵)"
+        }
+      },
+      {
+        "type": "نیم سکه",
+        "current": {
+          "value": 102000000,
+          "raw": "۱۰۲٫۰۰۰٫۰۰۰"
+        },
+        "high": {
+          "value": null,
+          "raw": "—"
+        },
+        "low": {
+          "value": null,
+          "raw": "—"
+        },
+        "yesterdayAvg": {
+          "value": 101703614,
+          "raw": "۱۰۱٫۷۰۳٫۶۱۴"
+        },
+        "change": {
+          "value": 296386,
+          "percent": 0.29,
+          "direction": "asc",
+          "raw": "۲۹۶٫۳۸۶ (۰٫۲۹)"
+        }
+      },
+      {
+        "type": "ربع سکه",
+        "current": {
+          "value": 56000000,
+          "raw": "۵۶٫۰۰۰٫۰۰۰"
+        },
+        "high": {
+          "value": null,
+          "raw": "—"
+        },
+        "low": {
+          "value": null,
+          "raw": "—"
+        },
+        "yesterdayAvg": {
+          "value": 56142252,
+          "raw": "۵۶٫۱۴۲٫۲۵۲"
+        },
+        "change": {
+          "value": -142252,
+          "percent": 0.25,
+          "direction": "desc",
+          "raw": "۱۴۲٫۲۵۲ (۰٫۲۵)"
+        }
+      },
+      {
+        "type": "سکه یک گرمی",
+        "current": {
+          "value": 28000000,
+          "raw": "۲۸٫۰۰۰٫۰۰۰"
+        },
+        "high": {
+          "value": null,
+          "raw": "—"
+        },
+        "low": {
+          "value": null,
+          "raw": "—"
+        },
+        "yesterdayAvg": {
+          "value": 28000000,
+          "raw": "۲۸٫۰۰۰٫۰۰۰"
+        },
+        "change": {
+          "value": null,
+          "percent": null,
+          "direction": "none",
+          "raw": "—"
+        }
       }
     ]
   }
