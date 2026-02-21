@@ -18,6 +18,7 @@ env/
 # Environment and secrets
 .env
 .env.*
+!.env.example
 
 # IDE / OS
 .vscode/
@@ -31,4 +32,3 @@ Thumbs.db
 # Coverage
 .coverage
 htmlcov/
-

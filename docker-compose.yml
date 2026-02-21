@@ -1,4 +1,14 @@
 services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
   gold-api:
     build:
       context: .
@@ -6,5 +16,15 @@ services:
     image: estjt-gold-api:latest
     container_name: estjt-gold-api
     restart: unless-stopped
+    environment:
+      CACHE_ENABLED: ${CACHE_ENABLED:-true}
+      CACHE_TTL_SECONDS: ${CACHE_TTL_SECONDS:-300}
+      CACHE_KEY_PRICES: ${CACHE_KEY_PRICES:-estjt:prices}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      REDIS_CONNECT_TIMEOUT_SECONDS: ${REDIS_CONNECT_TIMEOUT_SECONDS:-0.4}
+      REDIS_SOCKET_TIMEOUT_SECONDS: ${REDIS_SOCKET_TIMEOUT_SECONDS:-0.4}
+    depends_on:
+      redis:
+        condition: service_healthy
     ports:
       - "8000:8000"

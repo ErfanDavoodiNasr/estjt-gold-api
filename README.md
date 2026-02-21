@@ -27,18 +27,22 @@ docker compose down
 
 `http://localhost:8000`
 
-## اجرای لوکال بدون داکر
 
-نصب وابستگی‌ها:
+## تنظیمات کش (Redis)
+
+مقادیر پیش‌فرض کش مستقیماً داخل `docker-compose.yml` تعریف شده‌اند و نیازی به `.env` نیست.
+
+- `CACHE_ENABLED`: فعال/غیرفعال کردن کش (`true` یا `false`) - پیش‌فرض: `true`
+- `CACHE_TTL_SECONDS`: مدت اعتبار کش بر حسب ثانیه - پیش‌فرض: `300`
+- `CACHE_KEY_PRICES`: کلید کش برای نتیجه کامل قیمت‌ها - پیش‌فرض: `estjt:prices`
+- `REDIS_URL`: آدرس اتصال Redis - پیش‌فرض: `redis://redis:6379/0`
+- `REDIS_CONNECT_TIMEOUT_SECONDS`: timeout اتصال Redis - پیش‌فرض: `0.4`
+- `REDIS_SOCKET_TIMEOUT_SECONDS`: timeout خواندن/نوشتن Redis - پیش‌فرض: `0.4`
+
+برای override کردن هر مقدار، می‌توانید همان لحظه‌ی اجرا متغیر را ست کنید:
 
 ```bash
-pip install -r requirements.txt
-```
-
-اجرای سرویس:
-
-```bash
-uvicorn app.main:app --host 0.0.0.0 --port 8000
+CACHE_TTL_SECONDS=20 docker compose up -d
 ```
 
 ## Endpoint ها
