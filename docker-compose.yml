@@ -1,0 +1,10 @@
+services:
+  gold-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: estjt-gold-api:latest
+    container_name: estjt-gold-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
