@@ -27,6 +27,7 @@ RUN pip install --no-cache-dir --no-compile --no-index --find-links=/wheels -r r
     && rm -rf /wheels
 
 COPY app ./app
+RUN chmod -R a+rX /app/app
 
 EXPOSE 8000
 
